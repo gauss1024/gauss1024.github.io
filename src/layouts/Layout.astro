@@ -30,6 +30,14 @@ const { title, description, footer = true } = Astro.props;
     <meta name="description" content={description ?? config.head.description} />
     <link rel="icon" href="/favicon.ico" />
     <title>{[config.head.brand, title].reverse().join(" | ")}</title>
+    <script is:inline>
+      const theme = localStorage.getItem("theme");
+      if (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
   </head>
   <body class="text-text bg-bg">
     <header class="flex justify-between items-center p-2 gap-2 h-10">
@@ -37,12 +45,25 @@ const { title, description, footer = true } = Astro.props;
         <div class="i-ri:menu-4-fill"></div>
       </a>
       <div class="flex gap-2 items-center header-operations">
+        <button id="search-trigger" class="text-button text-xl" aria-label="search">
+          <div class="i-ri:search-line"></div>
+        </button>
+        <button id="theme-toggle" class="text-button text-xl" aria-label="toggle theme">
+          <div class="i-ri:sun-line"></div>
+        </button>
         <slot name="operations" />
         {(<Auth />)}
       </div>
     </header>
     <slot />
     {footer && <Footer />}
+    <script>
+      import { mountThemeToggle } from "@/components/ThemeToggle";
+      import { mountSearch } from "@/components/Search";
+      
+      mountThemeToggle("#theme-toggle");
+      mountSearch("#search-trigger");
+    </script>
   </body>
 </html>
 <style is:global>

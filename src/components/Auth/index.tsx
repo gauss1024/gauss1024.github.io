@@ -86,7 +86,7 @@ const Login = () => {
     dialog.show();
   };
   const LoginButton = () => (
-    <button class="text-sm" onClick={toLogin} title="login">
+    <button class="text-button text-xl" onClick={toLogin} title="login">
       <div class="i-ri:triangle-line"></div>
     </button>
   );
@@ -135,9 +135,9 @@ const Profile = (user: UserInfo) => {
         </a>
       )}
 
-      <div class="w-6 h-6 rounded-full cursor-pointer" onClick={toShowProfile}>
-        <img src={user.avatar} alt="" class="rounded-full" />
-      </div>
+      <button class="text-button !p-0.5 rounded-full" onClick={toShowProfile}>
+        <img src={user.avatar} alt="" class="w-6 h-6 rounded-full" />
+      </button>
     </div>
   );
 };
