@@ -211,6 +211,7 @@
   }
 
   pre {
+    position: relative;
     flex: 1 1 0;
     // transition: all ease 0.2s;
     background: transparent;
@@ -219,6 +220,39 @@
     margin: 1.5rem 0.25rem 0.25rem 0.25rem;
     padding: 0.75rem 1rem;
     overflow-y: auto;
+
+    .copy-code-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      color: #a0a0a0;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+      opacity: 0;
+      border: none;
+      outline: none;
+      z-index: 10;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #fff;
+      }
+
+      &.copied {
+        color: #4ade80;
+      }
+    }
+
+    &:hover .copy-code-btn {
+      opacity: 1;
+    }
 
     code {
       background: none;

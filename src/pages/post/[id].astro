@@ -28,6 +28,43 @@ export const getStaticPaths = async () => {
 
   mount(".navigator", "data-page-id");
   mountOutline(".outline-wrapper");
+
+  const copyIcon = '<div class="i-ri:file-copy-line w-4 h-4"></div>';
+  const checkIcon = '<div class="i-ri:check-line w-4 h-4"></div>';
+
+  function addCopyButtons() {
+    document.querySelectorAll('.ud-root pre').forEach((pre) => {
+      if (pre.querySelector('.copy-code-btn')) return;
+
+      const btn = document.createElement('button');
+      btn.className = 'copy-code-btn';
+      btn.innerHTML = copyIcon;
+      btn.setAttribute('aria-label', 'Copy code');
+
+      btn.addEventListener('click', async () => {
+        const code = pre.querySelector('code');
+        if (!code) return;
+        
+        const text = code.innerText;
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.innerHTML = checkIcon;
+          btn.classList.add('copied');
+          
+          setTimeout(() => {
+            btn.innerHTML = copyIcon;
+            btn.classList.remove('copied');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+
+      pre.appendChild(btn);
+    });
+  }
+
+  addCopyButtons();
 </script>
 
 <Layout title={post.title} description={post.intro}>
