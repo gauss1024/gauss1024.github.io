@@ -6,18 +6,18 @@ export const config = {
     logInAuthUrl: "",
   },
   head: {
-    title: "Urodele",
-    brand: "Urodele",
-    description: "A self-owned full-static blog system",
+    title: "Redshift",
+    brand: "⭐",
+    description: "Proletarier aller Länder, vereinigt euch!",
   },
   footer: {
-    copyright: "© Glink",
-    copyrightUrl: "https://github.com/glink25",
+    copyright: "© gauss1024",
+    copyrightUrl: "https://github.com/gauss1024",
   },
   pagination: {
     size: 10,
   },
-  giscus: false as object | false,
+  giscus: false as object | true,
 } as const;
 
 export default config;
