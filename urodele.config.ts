@@ -1,7 +1,7 @@
 export const config = {
   github: {
-    login: "glink25", // github login name, not user name
-    repo: "test-for-anything", //"urodele",
+    login: "gauss1024", // github login name, not user name
+    repo: "gauss1024.github.io", //"urodele",
     logInUrl: "",
     logInAuthUrl: "",
   },
