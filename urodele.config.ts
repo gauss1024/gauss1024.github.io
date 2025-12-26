@@ -7,7 +7,7 @@ export const config = {
   },
   head: {
     title: "Redshift",
-    brand: "⭐",
+    brand: "Proletarier aller Länder, vereinigt euch!",
     description: "Proletarier aller Länder, vereinigt euch!",
   },
   footer: {
